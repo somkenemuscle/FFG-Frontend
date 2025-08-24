@@ -20,13 +20,13 @@ function page() {
             src="https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3ltJTIwbWF0fGVufDB8fDB8fHww"
           />
 
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t  from-black via-black/80 to-transparent rounded-b-xl">
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t  from-black via-black/80 to-transparent rounded-2xl">
             <div className="px-4 absolute bottom-0">
               <div className="pb-8">
                 <h4 className="sm:text-3xl text-xl font-bold">Floor Mat</h4>
-                <h4 className="sm:text-lg text-sm">$200</h4>
+              
               </div>
-              <button className="border-[0.5px] text-sm  cursor-pointer font-semibold hover:bg-white hover:text-black border-white px-4 py-2 mb-8">Buy Now</button>
+             
             </div>
           </div>
         </div>
@@ -40,13 +40,11 @@ function page() {
             src="https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
 
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-b-xl">
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-2xl">
             <div className="px-4 absolute bottom-0">
               <div className="pb-8">
-                <h4 className="sm:text-3xl text-xl font-bold">Dumbells</h4>
-                <h4 className="sm:text-lg text-sm">$160</h4>
-              </div>
-              <button className="border-[0.5px] text-sm font-semibold cursor-pointer hover:bg-white hover:text-black  border-white px-4 py-2 mb-8">Buy Now</button>
+                <h4 className="sm:text-3xl text-xl font-bold">Dumbells</h4>        
+              </div>      
             </div>
           </div>
         </div>
@@ -60,13 +58,11 @@ function page() {
             src="https://images.unsplash.com/photo-1618354691249-18772bbac3a5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHdhdGVyYm90dGxlJTIwZ3ltfGVufDB8fDB8fHww"
           />
 
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-b-xl">
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-2xl">
             <div className="px-4 absolute bottom-0">
               <div className="pb-8">
                 <h4 className="sm:text-3xl text-xl font-bold">Water Bottle</h4>
-                <h4 className="sm:text-lg text-sm">$60</h4>
               </div>
-              <button className="border-[0.5px] text-sm font-semibold hover:bg-white hover:text-black cursor-pointer border-white px-4 py-2 mb-8">Buy Now</button>
             </div>
           </div>
         </div>
@@ -80,13 +76,13 @@ function page() {
             src="https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzaXN0YW5jZSUyMGJhbmR8ZW58MHx8MHx8fDA%3D"
           />
 
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-b-xl">
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent rounded-2xl">
             <div className="px-4 absolute bottom-0">
               <div className="pb-8">
                 <h4 className="sm:text-3xl text-xl font-bold">Resistance Band</h4>
-                <h4 className="sm:text-lg text-sm">$10</h4>
+                
               </div>
-              <button className="border-[0.5px] text-sm font-semibold hover:bg-white hover:text-black cursor-pointer border-white px-4 py-2 mb-8">Buy Now</button>
+            
             </div>
           </div>
         </div>
