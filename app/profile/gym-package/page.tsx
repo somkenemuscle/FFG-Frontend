@@ -17,9 +17,6 @@ function page() {
           <li className='flex flex-row items-center gap-5 md:gap-3 lg:gap-5'><Image width={40} height={40} alt='checkmark' className='p-2 border-[2px] w-8 h-8 rounded-full border-[#465734]' src='https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=465734' />All members events</li>
           <li className='flex flex-row items-center gap-5 md:gap-3 lg:gap-5'><Image width={40} height={40} alt='checkmark' className='p-2 border-[2px] w-8 h-8 rounded-full border-[#465734]' src='https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=465734' />Full gym access</li>
         </ul>
-      
-        <h2 className='text-sm sm:text-lg font-bold sm:font-medium bg-black text-white px-5 sm:px-8 rounded-full py-2'>Cancel Membership</h2>
-
       </div>
 
     </div>
