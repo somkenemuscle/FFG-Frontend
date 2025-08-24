@@ -8,7 +8,7 @@ export default function
             <div className='flex flex-col md:gap-8 gap-5 max-w-3xl mx-auto'>
 
 
-                <div className='py-4 rounded-2xl md:text-md text-sm bg-white/30 px-5'>
+                <div className='py-4 rounded-2xl md:text-md text-sm bg-white/20 px-5'>
                     <h5 className=' pb-3'>Session with <span className='text-[#72cd30] font-semibold'>Garinpa Adeolu</span></h5>
                     <div className='flex flex-col justify-center gap-2'>
                         <div className='flex flex-row items-center gap-2'>
@@ -36,7 +36,7 @@ export default function
                 </div>
 
 
-                <div className='py-4 rounded-2xl md:text-md text-sm bg-white/30 px-5'>
+                <div className='py-4 rounded-2xl md:text-md text-sm bg-white/20 px-5'>
                     <h5 className='text-md pb-3'>Session with <span className='text-[#72cd30] font-semibold'>Garinpa Adeolu</span></h5>
                     <div className='flex flex-col justify-center gap-2'>
                         <div className='flex flex-row items-center gap-2'>
@@ -64,7 +64,7 @@ export default function
                 </div>
 
 
-                 <div className='py-4 rounded-2xl md:text-md text-sm bg-white/30 px-5'>
+                 <div className='py-4 rounded-2xl md:text-md text-sm bg-white/20 px-5'>
                     <h5 className='text-md pb-3'>Session with <span className='text-[#72cd30] font-semibold'>Garinpa Adeolu</span></h5>
                     <div className='flex flex-col justify-center gap-2'>
                         <div className='flex flex-row items-center gap-2'>
