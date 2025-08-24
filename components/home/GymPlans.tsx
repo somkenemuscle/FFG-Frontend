@@ -5,7 +5,7 @@ import starpng from '../../public/stars.png'
 export default function
     () {
     return (
-        <div className='bg-[#647b4c] px-8 py-32 text-center'>
+        <div className='bg-[#647b4c] px-5 py-32 text-center'>
             <h2 className='border-[1px] border-white rounded-full w-32 mx-auto px-4  py-2'>Membership</h2>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  py-16 gap-3 lg:gap-5'>
