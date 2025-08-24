@@ -28,7 +28,7 @@ function Navbar() {
 
           </div>
           {DropDown &&
-            <ul className="absolute top-full sm:w-36 w-24 left-0 mt-1 sm:text-[10px] text-[8px] text-[#303030] md:text-sm z-40 py-1 flex flex-col rounded-sm bg-slate-100 border border-[#101010]">
+            <ul className="absolute top-full sm:w-36 w-24 left-0 mt-1 sm:text-[10px] text-[8px] text-[#303030] md:text-sm z-40 py-1 flex flex-col rounded-sm bg-slate-100">
               <a href="/gym-packages"> <li className="px-5 py-2 hover:bg-[#e9e9e9]">Gym Packages</li> </a>
               <a href="/equipments"> <li className="px-5 py-2  hover:bg-[#e9e9e9]">Gym  Tools</li> </a>
             </ul>
