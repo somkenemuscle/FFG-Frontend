@@ -74,9 +74,9 @@ export default function LoginPage() {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      
+      console.log(res.data)
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("fullname", JSON.stringify(res.data.user.fullname));
 
       toast.success("Login successful");
       router.push('/')
