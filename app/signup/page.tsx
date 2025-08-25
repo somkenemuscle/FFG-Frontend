@@ -3,6 +3,11 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import axios from 'axios'
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+
 
 // Carousel images
 const images = [
@@ -34,9 +39,8 @@ function ImageCarousel() {
         {images.map((_, index) => (
           <span
             key={index}
-            className={`h-1 w-8 rounded-full transition-all ${
-              index === current ? 'bg-white' : 'bg-gray-400'
-            }`}
+            className={`h-1 w-8 rounded-full transition-all ${index === current ? 'bg-white' : 'bg-gray-400'
+              }`}
           ></span>
         ))}
       </div>
@@ -47,6 +51,56 @@ function ImageCarousel() {
 export default function LoginPage() {
   const [usePhone, setUsePhone] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const router = useRouter()
+
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    role: "customer",
+  });
+
+
+
+  function handleChange(e: any) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setLoading(true);
+
+
+    try {
+      const res = await axios.post("https://ffg-backend-p30k.onrender.com/api/auth/signup", formData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      toast.success("Signup successful");
+      localStorage.setItem("fullname", res.data.fullname);
+      router.push('/')
+
+      console.log(res.data); // you can store token or user info here
+    } catch (error: any) {
+      if (error.response) {
+        toast.error(error.response.data.message || "Signup failed");
+      } else {
+        toast.error("Something went wrong. Try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+
 
   return (
     <div className="min-h-screen bg-white flex">
@@ -68,7 +122,7 @@ export default function LoginPage() {
             </a>
           </p>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-gray-800 text-sm font-semibold">
                 Full Name
@@ -76,6 +130,9 @@ export default function LoginPage() {
               <input
                 type="text"
                 placeholder="Full Name"
+                name='fullname'
+                value={formData.fullname}
+                onChange={handleChange}
                 className="mt-1 block text-sm text-gray-900 w-full rounded-lg border border-gray-300 p-2 transition duration-300"
               />
             </div>
@@ -87,6 +144,9 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="Email"
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block text-sm text-gray-900 w-full rounded-lg border border-gray-300 p-2 transition duration-300"
               />
             </div>
@@ -97,6 +157,9 @@ export default function LoginPage() {
               </label>
               <input
                 type="tel"
+                name='phoneNumber'
+                value={formData.phoneNumber}
+                onChange={handleChange}
                 placeholder="+234 801 234 5678"
                 className="mt-1 block text-sm text-gray-900 w-full rounded-lg border border-gray-300 p-2 transition duration-300"
               />
@@ -109,6 +172,9 @@ export default function LoginPage() {
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
+                  name='password'
+                  value={formData.password}
+                  onChange={handleChange}
                   placeholder="••••••"
                   className="mt-1 block text-sm text-gray-900 w-full rounded-lg border border-gray-300 p-2 pr-10 transition duration-300"
                 />
@@ -134,3 +200,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

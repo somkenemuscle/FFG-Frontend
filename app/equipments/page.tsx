@@ -5,7 +5,7 @@ import Image from "next/image"
 function page() {
   return (
     <div className="">
-      <div className="text-center py-24 bg-[#66903a] bg-[url('/bgp.png')] ">
+      <div className="text-center py-24 bg-[#66ae32]  bg-[url('/bgp.png')] ">
         <h2 className="sm:text-6xl text-4xl font-bold">Collection</h2>
         <p className="">Sport Accessories</p>
       </div>
