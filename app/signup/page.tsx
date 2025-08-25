@@ -84,11 +84,14 @@ export default function LoginPage() {
         }
       );
 
-      toast.success("Signup successful");
+    
+    console.log(res.data)
       localStorage.setItem("fullname", res.data.fullname);
+      localStorage.setItem("token", res.data.fullname);
+
+      toast.success("Signup successful");
       router.push('/')
 
-      console.log(res.data); // you can store token or user info here
     } catch (error: any) {
       if (error.response) {
         toast.error(error.response.data.message || "Signup failed");
