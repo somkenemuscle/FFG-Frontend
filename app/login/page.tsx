@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 // Carousel images
 const images = [
@@ -33,9 +36,8 @@ function ImageCarousel() {
         {images.map((_, index) => (
           <span
             key={index}
-            className={`h-1 w-8 rounded-full transition-all ${
-              index === current ? 'bg-white' : 'bg-gray-400'
-            }`}
+            className={`h-1 w-8 rounded-full transition-all ${index === current ? 'bg-white' : 'bg-gray-400'
+              }`}
           ></span>
         ))}
       </div>
@@ -45,7 +47,50 @@ function ImageCarousel() {
 
 export default function LoginPage() {
   const [usePhone, setUsePhone] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const router = useRouter()
+
+
+  function handleChange(e: any) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await axios.post(
+        "https://ffg-backend-p30k.onrender.com/api/auth/login",
+        formData,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      toast.success("Login successful");
+      router.push('/')
+    } catch (error: any) {
+      if (error.response) {
+        toast.error(error.response.data.message || "Login failed");
+      } else {
+        toast.error("Something went wrong. Try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
 
   return (
     <div className="min-h-screen bg-white flex">
@@ -68,9 +113,7 @@ export default function LoginPage() {
             </a>
           </p>
 
-          <form className="space-y-4">
-            {!usePhone ? (
-              <>
+          <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-gray-800 text-md font-semibold">
                     Email
@@ -78,6 +121,9 @@ export default function LoginPage() {
                   <input
                     type="email"
                     placeholder="Email"
+                    name='email'
+                    value={formData.email}
+                    onChange={handleChange}
                     className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
                     transition duration-300"
                   />
@@ -90,6 +136,9 @@ export default function LoginPage() {
                     <input
                       type={showPassword ? 'text' : 'password'}
                       placeholder="• • • • •"
+                      name='password'
+                      value={formData.password}
+                      onChange={handleChange}
                       className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
                       transition duration-300 pr-10"
                     />
@@ -102,53 +151,6 @@ export default function LoginPage() {
                     </button>
                   </div>
                 </div>
-              </>
-            ) : (
-              <>
-                <div>
-                  <label className="block text-md font-semibold text-gray-800">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+234 801 234 5678"
-                    className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
-                      transition duration-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-md font-semibold text-gray-800">
-                    Password
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="• • • • •"
-                      className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
-                      transition duration-300 pr-10"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-3 flex items-center text-gray-600"
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                </div>
-              </>
-            )}
-
-            <div className="flex justify-between items-center">
-              <button
-                type="button"
-                onClick={() => setUsePhone(!usePhone)}
-                className="text-sm text-gray-600 hover:underline"
-              >
-                {usePhone ? 'Use email instead' : 'Use phone number instead'}
-              </button>
-            </div>
-
             <button
               type="submit"
               className="w-full bg-purple-600 hover:bg-purple-800 text-white font-medium py-2 px-4 rounded-lg"

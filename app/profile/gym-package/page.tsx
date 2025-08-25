@@ -6,8 +6,8 @@ import Image from "next/image"
 function page() {
   return (
     <div className="mb-20">
-      <div className="text-center py-16 ">
-        <h2 className="sm:text-6xl text-[#72cd30] text-4xl font-bold">Current Gym Plan</h2>
+      <div className="text-center mb-11  py-24 bg-[#66ae32] bg-[url('/bgp.png')] ">
+        <h2 className="sm:text-6xl text-white text-4xl font-bold">Current Gym Plan</h2>
       </div>
       <div className='rounded-2xl bg-white max-w-3xl mx-auto text-black flex flex-col justify-center items-center px-5 pt-16 pb-14'>
         <h2 className='font-bold text-black text-2xl sm:text-5xl'>1 year Plan</h2>
