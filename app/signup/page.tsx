@@ -84,11 +84,9 @@ export default function LoginPage() {
         }
       );
 
-    
-    console.log(res.data)
+      
       localStorage.setItem("fullname", res.data.fullname);
       localStorage.setItem("token", res.data.fullname);
-
       toast.success("Signup successful");
       router.push('/')
 

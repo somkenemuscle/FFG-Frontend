@@ -24,21 +24,11 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-cover bg-center h-52 flex items-center px-6 md:px-12">
-        <div className="flex flex-col text-left">
-          <h2 className="text-sm md:text-lg text-gray-900 font-semibold mb-1">
-            WE'D LOVE TO HEAR FROM YOU
-          </h2>
-          <h1 className="contact-title text-3xl md:text-5xl font-bold">
-            Contact Us
-          </h1>
-        </div>
-      </div>
+    <div className="bg-gray-50 sm:px-14 px-4">
+ 
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto py-8 px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="max-w-4xl mx-auto py-24 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Contact Form */}
         <div>
           <h2 className="text-xl md:text-2xl text-gray-900 font-semibold mb-4">
@@ -91,7 +81,7 @@ export default function ContactPage() {
             ></textarea>
             <button
               type="submit"
-              className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-3 rounded-lg transition w-full sm:w-auto"
+              className="bg-black text-white px-6 py-3 rounded-lg transition w-full sm:w-auto"
             >
               Send Message
             </button>
@@ -117,7 +107,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-medium text-gray-900">Address:</h3>
-              <p className="text-gray-700">123, Your Street, Lagos, Nigeria</p>
+              <p className="text-gray-700">13, adeniyi Street, Lagos, Nigeria</p>
             </div>
           </div>
 
