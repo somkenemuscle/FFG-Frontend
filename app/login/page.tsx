@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { useFullNameStore } from '@/store/useFullnameStore'
 
 // Carousel images
 const images = [
@@ -54,6 +55,7 @@ export default function LoginPage() {
     password: "",
   });
   const router = useRouter()
+  const setFullName = useFullNameStore((state) => state.setFullName);
 
 
   function handleChange(e: any) {
@@ -74,11 +76,12 @@ export default function LoginPage() {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log(res.data)
+      setFullName(res.data.user.fullname)
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("fullname", JSON.stringify(res.data.user.fullname));
+      localStorage.setItem("fullname", (res.data.user.fullname));
 
       toast.success("Login successful");
+
       router.push('/')
     } catch (error: any) {
       if (error.response) {
@@ -114,43 +117,43 @@ export default function LoginPage() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-gray-800 text-md font-semibold">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name='email'
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
+            <div>
+              <label className="block text-gray-800 text-md font-semibold">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Email"
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+                className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
                     transition duration-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-md font-semibold text-gray-800">
-                    Password
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="• • • • •"
-                      name='password'
-                      value={formData.password}
-                      onChange={handleChange}
-                      className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
+              />
+            </div>
+            <div>
+              <label className="block text-md font-semibold text-gray-800">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="• • • • •"
+                  name='password'
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
                       transition duration-300 pr-10"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-3 flex items-center text-gray-600"
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                </div>
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-600"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
             <button
               type="submit"
               className="w-full bg-purple-600 hover:bg-purple-800 text-white font-medium py-2 px-4 rounded-lg"
