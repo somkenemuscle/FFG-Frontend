@@ -84,9 +84,9 @@ export default function LoginPage() {
         }
       );
 
-      
-      localStorage.setItem("fullname", res.data.fullname);
-      localStorage.setItem("token", res.data.fullname);
+      console.log(res)
+      localStorage.setItem("fullname", res.data.newUser.fullname);
+      localStorage.setItem("token", res.data.token);
       toast.success("Signup successful");
       router.push('/')
 
@@ -94,6 +94,7 @@ export default function LoginPage() {
       if (error.response) {
         toast.error(error.response.data.message || "Signup failed");
       } else {
+        console.log(error)
         toast.error("Something went wrong. Try again.");
       }
     } finally {
