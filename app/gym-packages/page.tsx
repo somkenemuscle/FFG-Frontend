@@ -15,7 +15,7 @@ function page() {
       const res = await axios.get(
         "https://ffg-backend-p30k.onrender.com/api/admin/membership-plans"
       );
-      setPlans(res.data.data); 
+      setPlans(res.data.data);
     } catch (error) {
       console.error("Error fetching plans:", error);
     } finally {
@@ -28,24 +28,60 @@ function page() {
   }, []);
 
   return (
-    <div className="my-20 px-8">
+    <div className="my-20 px-8 w-7xl mx-auto">
       <h2 className="text-center text-4xl font-bold ">Membership Plans</h2>
       <p className="text-center text-xs pt-2 text-[#d0d0d0]">Looking to complement your routine with group training or drop into a few classes? <br /> Check out our class pass options below.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  py-14 gap-3 lg:gap-5">
         {loading && <p>Loading membership plans...</p>}
 
-        {plans.map((plan) => ( 
-          <div key={plan._id} className={`rounded-2xl flex flex-col justify-center items-center px-5 pt-16 pb-14 ${plan.durationInMonths === 6 ? "bg-[#647b4c] text-white" : "bg-white text-black"}`}>
-            <h2 className='font-bold text-center  text-3xl'>{plan.name}</h2>
-            <div className='flex flex-row items-center justify-center pt-5'><h2 className={`font-bold text-4xl ${plan.durationInMonths === 6 ? "text-black" : "text-[#465734]"}`}>${plan.price} </h2> <sub className='text-xl font-bold'>{''}/mo</sub> </div>
-            <ul className='py-10 text-md space-y-2'>
-              <li className='flex flex-row items-center gap-5 md:gap-3 lg:gap-5'> <Image width={40} height={40} alt='checkmark' className='p-2 border-[2px] w-8 h-8 rounded-full border-[#000000]' src='https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=000000' />All Classes</li>
-              <li className='flex flex-row items-center gap-5 md:gap-3 lg:gap-5'><Image width={40} height={40} alt='checkmark' className='p-2 border-[2px] w-8 h-8 rounded-full border-[#000000]' src='https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=000000' />All members events</li>
-              <li className='flex flex-row items-center gap-5 md:gap-3 lg:gap-5'><Image width={40} height={40} alt='checkmark' className='p-2 border-[2px] w-8 h-8 rounded-full border-[#000000]' src='https://img.icons8.com/?size=100&id=e0QmzRlv9YWo&format=png&color=000000' />Full gym access</li>
-            </ul>
-            <h4 className={`text-md  pb-8  ${plan.durationInMonths === 6 ? "text-[#f1f1f1]" : "text-[#979494]"} `}>Changes every {plan.durationInMonths} months unless you cancel</h4>
-            <a href={`/book-plan/${plan._id}`} className={`text-sm font-bold cursor-pointer ${plan.durationInMonths === 6 ? "bg-white text-black" : " bg-black text-white"} px-5 rounded-full py-2`}>Join Membership</a>
+        {plans.map((plan, idx) => (
+          <div
+            key={plan._id}
+            className="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col p-8 relative"
+          >
+            {/* Highlight Popular */}
+            {idx === 1 && (
+              <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#465734] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                Most Popular
+              </span>
+            )}
 
+            {/* Title */}
+            <h2 className="font-bold text-2xl text-center mb-4">{plan.name}</h2>
+
+            {/* Price */}
+            <div className="text-center mb-6">
+              <span className="text-4xl font-extrabold text-[#465734]">
+                ${Number(plan.price).toLocaleString()}
+              </span>
+              <p className="text-sm text-gray-500 mt-1">
+                billed every {plan.durationInMonths} month(s)
+              </p>
+            </div>
+
+            {/* Features */}
+            <ul className="space-y-4 flex-1">
+              {[
+                "All Classes",
+                "All members events",
+                "Full gym access",
+              ].map((feature, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#465734]/10 text-[#465734]">
+                    ✓
+                  </span>
+                  <span className="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA */}
+            <a
+              href={`/book-plan/${plan._id}`}
+              className="mt-8 inline-block text-center bg-[#465734] hover:bg-[#364427] text-white font-semibold py-3 rounded-xl transition"
+            >
+              Start {plan.name}
+            </a>
           </div>
         ))}
       </div>

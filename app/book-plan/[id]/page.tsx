@@ -9,7 +9,7 @@ import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 
 
-export default function  () {
+export default function () {
     const [plan, setPlan] = useState<Plan | null>(null);
     const [loading, setLoading] = useState(false);
     const { id } = useParams<{ id: string }>();
@@ -68,30 +68,52 @@ export default function  () {
             {loading && <p>Loading confirmation...</p>}
 
             {plan && (
-                <div className='py-6 rounded-2xl md:text-md text-black  bg-white px-5'>
-                    <h5 className=' pb-3 font-semibold text-2xl'>Session with <span className='text-[#72cd30] font-bold'>FFG</span></h5>
-                    <div className='flex flex-col justify-center'>
-                        <div className='flex flex-row items-center gap-2'>
-                            <h2 className='font-semibold'>Plan:</h2>
-                            <h3>{plan.name}</h3>
-                        </div>
-                        <div className='flex flex-row items-center pb-5  gap-2'>
-                            <h2 className='font-semibold'>Duration:</h2>
-                            <h3>{plan.durationInMonths} {plan.durationInMonths === 1 ? "month" : "months"}</h3>
-                        </div>
-                        <div className='flex flex-col justify-center'>
-                            <h2 className='font-semibold'>Description</h2>
-                            <h3 className='text-[#424242] font-light text-md'>{plan.description}</h3>
-                        </div>
-                        <hr className=' bg-gray-500 my-3' />
-                        <div className='flex flex-row  justify-between items-center px-4'>
-                            <div className='font-semibold'>Total: </div>
-                            <div>$ {plan.price}</div>
+                <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-black max-w-md mx-auto">
+                    {/* Header */}
+                    <h5 className="text-2xl font-semibold mb-6 text-center">
+                        Session with{" "}
+                        <span className="text-[#72cd30] font-bold">FFG</span>
+                    </h5>
+
+                    {/* Plan Info */}
+                    <div className="space-y-4">
+                        <div className="flex justify-between items-center">
+                            <h2 className="font-semibold text-gray-700">Plan:</h2>
+                            <h3 className="text-gray-900">{plan.name}</h3>
                         </div>
 
-                        <button onClick={() => handleBooking(plan._id)} className="text-sm font-bold cursor-pointer mt-10  bg-black text-white px-5 rounded-full py-2">Confirm booking</button>
+                        <div className="flex justify-between items-center">
+                            <h2 className="font-semibold text-gray-700">Duration:</h2>
+                            <h3 className="text-gray-900">
+                                {plan.durationInMonths}{" "}
+                                {plan.durationInMonths === 1 ? "month" : "months"}
+                            </h3>
+                        </div>
 
+                        <div>
+                            <h2 className="font-semibold text-gray-700 mb-1">Description</h2>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                {plan.description}
+                            </p>
+                        </div>
                     </div>
+
+                    {/* Divider */}
+                    <hr className="my-6 border-gray-300" />
+
+                    {/* Price */}
+                    <div className="flex justify-between items-center text-lg font-medium mb-6">
+                        <span className="text-gray-700">Total:</span>
+                        <span className="text-black font-bold">₦{Number(plan.price).toLocaleString()}</span>
+                    </div>
+
+                    {/* CTA */}
+                    <button
+                        onClick={() => handleBooking(plan._id)}
+                        className="w-full py-3 rounded-lg bg-black text-white font-semibold text-sm hover:bg-gray-800 transition"
+                    >
+                        Confirm Booking
+                    </button>
                 </div>
             )}
 
