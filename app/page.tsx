@@ -18,7 +18,7 @@ export default function Home() {
         <Service/>
       </div>
       <GymPlans/>
-      <About/>
+      {/* <About/> */}
 
 
     </>

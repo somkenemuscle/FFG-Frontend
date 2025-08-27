@@ -13,10 +13,11 @@ function Footer() {
 
 
     return (
-        <div className="pt-20 border-t-[0.5px] border-t-white ">
-            <div className="flex pb-8 md:flex-row md:justify-between  flex-col sm:px-8 px-5 gap-5">
+        <div className="pt-20 border-t-[0.5px] border-t-white">
+        <div className="w-7xl mx-auto ">
+                <div className="flex pb-8 md:flex-row md:justify-between  flex-col sm:px-8 px-5 gap-5">
                 <div className="flex flex-col  font-medium tracking-tight">
-                    <h2 className="text-white text-lg md:text-3xl "> Ready to unleash the potential of yourself?</h2>
+                    <h2 className="text-white text-lg md:text-3xl "> Ready to unleash the <br /> potential of yourself?</h2>
                     <h5 className="text-[#9cff32] text-xl md:text-3xl  font-bold" >Get in Touch.</h5>
                 </div>
                 <div className="flex flex-col justify-center  ">
@@ -34,7 +35,7 @@ function Footer() {
 
             </div>
 
-            <div className="border-t-[0.5px] flex flex-col md:flex-row md:justify-between  px-8 md:gap-5  text-center text-xs py-5 text-[#d0d0d0] border-t-[#636262]">
+            <div className="border-t-[0.5px] flex flex-col md:flex-row md:justify-between  px-8 md:gap-5  text-center text-xs py-5 text-[#d0d0d0] border-t-[#636262] ">
                 <p>&#169; 2025 FFG. All rights reserved</p>
                 <div className="flex flex-row items-center gap-3 justify-center">
                     <p className="underline underline-offset-0">privacy policy</p>
@@ -42,6 +43,8 @@ function Footer() {
                 </div>
 
             </div>
+            </div>
+            
         </div>
 
     )

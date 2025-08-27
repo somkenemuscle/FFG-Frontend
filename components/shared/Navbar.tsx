@@ -32,7 +32,7 @@ function Navbar() {
 
 
   return (
-    <div className="flex flex-row bg-black sticky top-0 border-b b0rder-[0.5px] z-40 border-[#c9c3c3]  items-center justify-between py-5 md:px-6 px-4 lg:px-8">
+    <div className="flex flex-row bg-black sticky top-0 z-40  items-center justify-between py-5 md:px-6 px-4 lg:px-8">
       <a href="/"><Image className=" font-bold sm:w-11 sm:h-11 w-6 h-6" width={40} height={40} alt="logo" src='https://img.icons8.com/?size=100&id=Y3RVb9560HW2&format=png&color=ffffff' /></a>
       <div className="flex flex-row gap-3 sm:gap-7 text-white text-[8px] cursor-pointer sm:text-[14px] md:text-md items-center">
         <div className="flex flex-col relative">
