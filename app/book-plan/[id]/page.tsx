@@ -9,7 +9,7 @@ import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 
 
-export default function () {
+export default function  () {
     const [plan, setPlan] = useState<Plan | null>(null);
     const [loading, setLoading] = useState(false);
     const { id } = useParams<{ id: string }>();
