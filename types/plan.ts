@@ -22,3 +22,23 @@ export interface MembershipPlan {
   updatedAt: string;
   __v: number;
 }
+
+export interface Trainer {
+  _id: string;
+  fullname: string;
+  email: string;
+  phoneNumber: string;
+  field: string;
+  role: string;
+  profile_picture: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface GymTools {
+  _id: string;
+  name: string;
+  image: string;
+  createdAt: string; 
+  updatedAt: string; 
+}

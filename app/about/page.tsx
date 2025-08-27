@@ -1,6 +1,25 @@
+'use client'
 import React from "react";
+import { useEffect,useState } from "react";
+import axios from "axios";
+import { Trainer } from "@/types/plan";
 
-const AboutUs = () => {
+export default function AboutUs(){
+  const [trainers, setTrainers] = useState<Trainer[]>([]);
+
+  async function fetchTrainers() {
+    try {
+      const res = await axios.get("https://ffg-backend-p30k.onrender.com/api/admin/trainers");
+      setTrainers(res.data.data)
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    fetchTrainers();
+  }, []);
+
   return (
     <div className="">
       {/* Hero Section */}
@@ -19,7 +38,7 @@ const AboutUs = () => {
       </div>
 
       {/* Core Values */}
-      <div className="max-w-6xl mx-auto text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-6 md:px-20">
+      <div className="max-w-6xl mx-auto text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 md:px-20">
         <div className="border-[0.5px]  border-white bg-[#9cff32]/10 shadow-md p-6  rounded-2xl hover:shadow-xl transition">
           <h3 className="text-xl  font-bold mb-2">Our Mission</h3>
           <p className="font-light">
@@ -49,17 +68,12 @@ const AboutUs = () => {
       <div className="max-w-6xl mx-auto pt-32 px-6 md:px-20">
         <h2 className="text-3xl font-bold text-center text-white mb-12">Meet Our Trainers</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {[
-            { name: "Michael Ade", role: "Head Coach", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fHww" },
-            { name: "Sarah Johnson", role: "Strength & Conditioning Coach", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D" },
-            { name: "David Lee", role: "Personal Trainer", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D" },
-
-          ].map((member, i) => (
-            <div key={i} className="bg-[#ededed] shadow-md rounded-2xl overflow-hidden hover:shadow-xl text-center">
-              <img src={member.img} alt={member.name} className="w-full h-56 object-cover aspect-square" />
+          {trainers.map((member) => (
+            <div key={member._id} className="bg-[#ededed] shadow-md rounded-2xl overflow-hidden hover:shadow-xl text-center">
+              <img src={member.profile_picture} alt={member.fullname} className="w-full h-56 object-cover aspect-square" />
               <div className="py-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-                <p className="text-gray-500 font-light">{member.role}</p>
+                <h3 className="text-lg font-semibold text-gray-800">{member.fullname}</h3>
+                <p className="text-gray-500 font-light">{member.field}</p>
               </div>
             </div>
           ))}
@@ -78,4 +92,3 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
