@@ -56,7 +56,7 @@ export default function () {
 
             console.log("Booking created:", response.data);
             toast.success("Booking successful!");
-            router.push('/')
+            router.push('/profile/booking-history')
         } catch (error: any) {
             console.error("Booking error:", error.response?.data || error.message);
             toast.error(error.response?.data?.message || "Booking failed");
