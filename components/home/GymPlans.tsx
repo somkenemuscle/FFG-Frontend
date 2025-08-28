@@ -52,7 +52,7 @@ export default function () {
                         {/* Price */}
                         <div className="text-center mb-6">
                             <span className="text-4xl font-extrabold text-[#465734]">
-                                ${Number(plan.price).toLocaleString()}
+                                ₦{Number(plan.price).toLocaleString()}
                             </span>
                             <p className="text-sm text-gray-500 mt-1">
                                 billed every {plan.durationInMonths} month(s)
