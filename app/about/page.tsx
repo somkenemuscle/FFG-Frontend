@@ -42,24 +42,24 @@ export default function AboutUs(){
         <div className="border-[0.5px]  border-white bg-[#9cff32]/10 shadow-md p-6  rounded-2xl hover:shadow-xl transition">
           <h3 className="text-xl  font-bold mb-2">Our Mission</h3>
           <p className="font-light">
-            To connect food lovers and home cooks by sharing recipes, ideas,
-            and experiences that bring joy to the table.
+           To empower individuals to achieve their fitness goals through dedication,
+      proper guidance, and a supportive community.
           </p>
         </div>
 
         <div className="border-[0.5px]  border-white bg-[#9cff32]/10 shadow-md p-6 rounded-2xl  hover:shadow-xl transition">
           <h3 className="text-xl font-bold mb-2">What We Offer</h3>
           <p className="font-light">
-            A platform where you can explore new recipes, share your own, and
-            discover cooking tips to level up your kitchen skills.
+            State-of-the-art gym equipment, expert trainers, personalized workout
+      programs, and group classes designed to keep you motivated.
           </p>
         </div>
 
         <div className="border-[0.5px]  border-white bg-[#9cff32]/10 shadow-md p-6 rounded-2xl hover:shadow-xl transition">
           <h3 className="text-xl font-bold  mb-2">Our Vision</h3>
           <p className="font-light">
-            To become the go-to community for authentic and innovative recipes,
-            where culture and creativity meet on a plate.
+            To build a fitness culture where strength, health, and discipline are a
+      lifestyle — inspiring transformation in and out of the gym.
           </p>
         </div>
       </div>
