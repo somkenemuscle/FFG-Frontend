@@ -1,108 +1,70 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useFullNameStore } from '@/store/useFullnameStore'
 
-// Carousel images
-const images = [
-  'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGd5bXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1637430308606-86576d8fef3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-]
-
-function ImageCarousel() {
-  const [current, setCurrent] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent(prev => (prev + 1) % images.length)
-    }, 5000)
-    return () => clearInterval(timer)
-  }, [])
-
-  return (
-    <div className="relative w-full h-full overflow-hidden">
-      <img
-        src={images[current]}
-        alt={`Slide ${current + 1}`}
-        className="w-full h-full object-cover object-center"
-      />
-
-      {/* Dots */}
-      <div className="absolute bottom-4 left-0 w-full flex justify-center gap-2">
-        {images.map((_, index) => (
-          <span
-            key={index}
-            className={`h-1 w-8 rounded-full transition-all ${index === current ? 'bg-white' : 'bg-gray-400'
-              }`}
-          ></span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 export default function LoginPage() {
-  const [usePhone, setUsePhone] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  });
+  })
   const router = useRouter()
-  const setFullName = useFullNameStore((state) => state.setFullName);
-
+  const setFullName = useFullNameStore((state: any) => state.setFullName)
 
   function handleChange(e: any) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
+    })
   }
 
   async function handleSubmit(e: any) {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
 
     try {
       const res = await axios.post(
         "https://ffg-backend-p30k.onrender.com/api/auth/login",
         formData,
         { headers: { "Content-Type": "application/json" } }
-      );
+      )
 
       setFullName(res.data.user.fullname)
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("fullname", (res.data.user.fullname));
+      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("fullname", res.data.user.fullname)
 
-      toast.success("Login successful");
+      toast.success("Login successful")
+      window.location.href = "/"
 
-      router.push('/')
     } catch (error: any) {
       if (error.response) {
-        toast.error(error.response.data.message || "Login failed");
+        toast.error(error.response.data.message || "Login failed")
       } else {
-        toast.error("Something went wrong. Try again.");
+        toast.error("Something went wrong. Try again.")
       }
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
-
   return (
-    <div className="min-h-screen bg-white flex">
-      {/* Left side carousel */}
+    <div className="min-h-screen flex bg-white">
+      {/* Left side static image */}
       <div className="hidden md:flex w-1/2 h-screen">
-        <ImageCarousel />
+        <img
+          src="https://images.unsplash.com/photo-1679792756270-c90bb6f34868?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Gym"
+          className="w-full h-full object-cover"
+        />
       </div>
 
-      {/* Right side */}
+      {/* Right side form */}
       <div className="flex w-full md:w-1/2 justify-center items-center p-6 bg-white">
         <div className="w-full max-w-md space-y-6">
           <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
@@ -124,13 +86,14 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="Email"
-                name='email'
+                name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
-                    transition duration-300"
+                className="mt-1 block text-gray-900 w-full rounded-xl border border-gray-300 p-3 transition duration-300"
+                required
               />
             </div>
+
             <div>
               <label className="block text-md font-semibold text-gray-800">
                 Password
@@ -139,11 +102,11 @@ export default function LoginPage() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="• • • • •"
-                  name='password'
+                  name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="mt-1 block text-gray-900 w-full rounded-lg border border-gray-300 p-2 
-                      transition duration-300 pr-10"
+                  className="mt-1 block text-gray-900 w-full rounded-xl border border-gray-300 p-3 transition duration-300 pr-10"
+                  required
                 />
                 <button
                   type="button"
@@ -154,11 +117,13 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+
             <button
               type="submit"
-              className="w-full bg-purple-600 hover:bg-purple-800 text-white font-medium py-2 px-4 rounded-lg"
+              disabled={loading}
+              className="w-full bg-black hover:bg-[#0d1408] text-white font-medium p-3 rounded-lg transition disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Sign In
+              {loading ? "Signing In..." : "Sign In"}
             </button>
           </form>
         </div>

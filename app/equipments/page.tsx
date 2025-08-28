@@ -31,7 +31,7 @@ function page() {
         <h2 className="sm:text-6xl text-4xl font-bold">Collection</h2>
         <p className="">Sport Accessories</p>
       </div>
-      {loading && <p>Loading confirmation...</p>}
+      {loading && <p></p>}
       {tools && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   items-center justify-center py-20 gap-12 sm:px-14 px-5">
           {tools.map((tool) => (

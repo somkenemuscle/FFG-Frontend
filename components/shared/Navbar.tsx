@@ -30,6 +30,14 @@ function Navbar() {
   }
 
 
+  function handleLogOut() {
+    return () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("fullname");
+      setFullName('');
+    }
+  }
+
 
   return (
     <div className="flex flex-row bg-black sticky top-0 z-40  items-center justify-between py-5 md:px-6 px-4 lg:px-8">
@@ -79,6 +87,8 @@ function Navbar() {
             {UserDropDown &&
               <ul className="absolute top-full w-24 mx-auto left-0 mt-1 sm:text-[10px] text-[8px] px-1 text-[#303030] md:text-sm z-40 py-1 flex flex-col rounded-[4px] bg-slate-100">
                 <a href="/profile/booking-history"> <li className="px-5 py-2 rounded-[2px] hover:bg-gray-200">History</li> </a>
+                <a href="/login"> <li className="px-5 py-2 rounded-[2px] hover:bg-gray-200 text-red-500" onClick={handleLogOut()}>Logout</li> </a>
+
               </ul>
             }
 

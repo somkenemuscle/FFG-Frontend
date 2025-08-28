@@ -32,7 +32,7 @@ function page() {
       <h2 className="text-center text-4xl font-bold ">Membership Plans</h2>
       <p className="text-center text-xs pt-2 text-[#d0d0d0]">Looking to complement your routine with group training or drop into a few classes? <br /> Check out our class pass options below.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  py-14 gap-3 lg:gap-5">
-        {loading && <p>Loading membership plans...</p>}
+        {loading && <p></p>}
 
         {plans.map((plan, idx) => (
           <div

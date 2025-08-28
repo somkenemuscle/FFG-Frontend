@@ -65,7 +65,7 @@ export default function () {
 
     return (
         <div className='flex my-16 flex-col sm:px-14 px-5 md:gap-8 gap-5 max-w-2xl mx-auto'>
-            {loading && <p>Loading confirmation...</p>}
+            {loading && <p></p>}
 
             {plan && (
                 <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 text-black max-w-md mx-auto">
