@@ -14,7 +14,7 @@ function Footer() {
 
     return (
         <div className="pt-20 border-t-[0.5px] border-t-white">
-        <div className="w-7xl mx-auto ">
+        <div className=" ">
                 <div className="flex pb-8 md:flex-row md:justify-between  flex-col sm:px-8 px-5 gap-5">
                 <div className="flex flex-col  font-medium">
                     <h2 className="text-white text-lg md:text-3xl "> Ready to unleash the <br /> potential of yourself?</h2>
