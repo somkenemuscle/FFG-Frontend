@@ -2,7 +2,7 @@
 
 function Login() {
   return (
-    <div>login form</div>
+    <div>login Form</div>
   )
 }
 
